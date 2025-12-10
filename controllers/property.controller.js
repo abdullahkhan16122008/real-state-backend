@@ -217,11 +217,11 @@ const deletePropertyController = async (req, res) => {
 
 let getPropertiesController = async (req, res) => {
 
-    let { page } = req.body.page;
+    let { limit } = req.body;
 
     try {
-        let properties = await Property.find({ page });
-        return res.status(200).json({ properties, success: true, update: update })
+        let properties = await Property.find().limit(limit);
+        return res.status(200).json({ properties, success: true })
 
     } catch (err) {
         return res.status(201).json({ message: `Internal Server Issue`, error: err, success: false })
@@ -241,7 +241,7 @@ let getPropertiesAdminController = async (req, res) => {
 let getFeaturedPropertiesController = async (req, res) => {
 
     try {
-        let featuredProperties = await Property.find({ status: "Featured" });
+        let featuredProperties = await Property.find({ status: "Featured" }).limit(3);
         return res.status(201).json({ featuredProperties, success: true })
 
     } catch (err) {
@@ -252,7 +252,7 @@ let getFeaturedPropertiesController = async (req, res) => {
 let getHotPropertiesController = async (req, res) => {
 
     try {
-        let hotProperties = await Property.find({ status: "Hot" });
+        let hotProperties = await Property.find({ status: "Hot" }).limit(3);
         return res.status(201).json({ hotProperties, success: true })
 
     } catch (err) {
