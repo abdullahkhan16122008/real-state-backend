@@ -34,5 +34,5 @@ mongoose.connect(process.env.MONGODB_URI).then(e => {
 app.use(router)
 
 app.listen(port, () => {
-    console.log(`App is LIstening on port: ${port}`)
+    console.log(`App is Listening on port: ${port}`)
 })

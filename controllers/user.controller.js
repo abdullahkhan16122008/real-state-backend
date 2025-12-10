@@ -129,13 +129,13 @@ let loginUser = async (req, res) => {
 
         res.cookie('accessToken', token, {
             httpOnly: true,
-            samSite: 'none',
+            sameSite: 'none',
             secure: true,
             maxAge: 1000 * 60 * 15
         })
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
-            samSite: 'none',
+            sameSite: 'none',
             secure: true,
             maxAge: 1000 * 60 * 60 * 24 * 356
         })
@@ -215,7 +215,7 @@ let verifyToken = async (req, res) => {
                 // Set new access token in cookie
                 res.cookie('accessToken', newAccessToken, {
                     httpOnly: true,
-                    sameSite: 'none', // Fixed typo: samsite → sameSite
+                    sameSite: 'none',
                     secure: true,     // Must be true in production (HTTPS)
                     maxAge: 1000 * 60 * 15 // 15 minutes
                 });
