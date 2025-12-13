@@ -4,7 +4,8 @@ let contactSchema = new mongoose.Schema({
     fullName: String,
     email: String,
     phoneNumber: String,
-    message: String
+    message: String,
+    interest: String
 }, { timestamps: true })
 
 

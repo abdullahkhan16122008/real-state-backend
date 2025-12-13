@@ -2,7 +2,7 @@ const Contact = require("../models/contacts");
 
 
 let contactController = async (req, res) => {
-    let { fullName, email, phoneNumber, message } = req.body;
+    let { fullName, email, phoneNumber, message, interest } = req.body;
 
     if(!fullName || !email || !phoneNumber || !message) {
         return res.status(201).json({message: 'Fill all the empty fields', success: false})
@@ -13,7 +13,8 @@ let contactController = async (req, res) => {
             fullName,
             email,
             phoneNumber,
-            message
+            message,
+            interest
         })
         await contact.save();
 
