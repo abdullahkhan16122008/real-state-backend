@@ -18,7 +18,7 @@ cloudinary.config({
 
 const upload = multer({ storage: multer.memoryStorage() });
 app.use(cors({
-    origin: [process.env.FRONTEND, 'http://localhost:3001', 'http://localhost:8080', 'https://luxurydreamhouse.netlify.app'],
+    origin: [process.env.FRONTEND, 'http://localhost:3001', 'http://localhost:8080', 'https://luxurydreamhouse.netlify.app', 'https://dream-home-showcase.onrender.com'],
     credentials: true
 }));
 app.use(express.json())
