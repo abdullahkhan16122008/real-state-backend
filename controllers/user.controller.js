@@ -247,14 +247,27 @@ let verifyToken = async (req, res) => {
 
 let logoutUser = async (req, res) => {
     try {
+        res.clearCookie('accessToken', {
+            httpOnly: true,
+            secure: true, // true in prod
+            sameSite: 'none', // or 'lax'/'strict' — match exactly what you used when setting
+            path: '/',        // almost always needed
+            // domain: '.yourdomain.com' // only if you set domain when creating
+        });
 
-        res.clearCookie('accessToken');
-        res.clearCookie('refreshToken');
-        return res.status(200).json({message: 'Logged Out Successfully', success: true})
+        res.clearCookie('refreshToken', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+            path: '/',
+            // domain: if used
+        });
+        return res.status(200).json({ message: 'Logged Out Successfully', success: true })
     } catch (err) {
-        return res.status(201).json({message: 'Error:', err})
+        return res.status(201).json({ message: 'Error:', err })
     }
 }
+
 module.exports = {
     updateUser,
     loginUser,
