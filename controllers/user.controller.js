@@ -251,7 +251,6 @@ let logoutUser = async (req, res) => {
             httpOnly: true,
             secure: true, // true in prod
             sameSite: 'none', // or 'lax'/'strict' — match exactly what you used when setting
-            path: '/',        // almost always needed
             // domain: '.yourdomain.com' // only if you set domain when creating
         });
 
@@ -259,7 +258,6 @@ let logoutUser = async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
-            path: '/',
             // domain: if used
         });
         return res.status(200).json({ message: 'Logged Out Successfully', success: true })
